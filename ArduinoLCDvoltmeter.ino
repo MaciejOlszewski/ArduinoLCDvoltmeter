@@ -3,7 +3,7 @@
 // LCD pin setup
 LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
 //define 10 samples 
-#define NUM_SAMPLES 10
+#define number_of_samples 10
 // sum of samples read from sensor pin
 int sum = 0;
 // samples count
@@ -22,12 +22,12 @@ void setup() {
 }
 
 void loop() {
-  while (sample_count < NUM_SAMPLES) {
+  while (sample_count < number_of_samples) {
         sum += analogRead(A2);
         sample_count++;
         delay(10);
     }
-  napiecie = ((float)sum / (float)NUM_SAMPLES * 4.90) / 1024.0;
+  napiecie = ((float)sum / (float)number_of_samples * 4.90) / 1024.0;
   //4.90 is a value on 5V pin of Arduino wich is used as reference to calculate voltage on sensor pin, 
   //you have to "calibrate" voltmeter putting here measured value on +5V
   Serial.print(napiecie);
